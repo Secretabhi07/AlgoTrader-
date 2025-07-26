@@ -1,7 +1,0 @@
-# Trading System Configuration
-initial_cash=100000.0
-max_position_size=10000
-max_daily_loss=5000
-short_ma_period=5
-long_ma_period=20
-symbols=AAPL,GOOGL,MSFT
