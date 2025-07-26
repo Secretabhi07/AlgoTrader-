@@ -15,8 +15,8 @@ find_package(Threads REQUIRED)
 # Include directories
 include_directories(src)
 
-# Source files
-set(SOURCES
+# Source files for main application
+set(MAIN_SOURCES
     src/main.cpp
     src/market_data.cpp
     src/strategy.cpp
@@ -26,14 +26,40 @@ set(SOURCES
     src/config.cpp
 )
 
-# Create executable
-add_executable(${PROJECT_NAME} ${SOURCES})
+# Source files for tests (excluding main.cpp)
+set(TEST_SOURCES
+    src/market_data.cpp
+    src/strategy.cpp
+    src/order_manager.cpp
+    src/risk_manager.cpp
+    src/portfolio.cpp
+    src/config.cpp
+    tests/test_strategy.cpp
+)
 
-# Link libraries
+# Create main executable
+add_executable(${PROJECT_NAME} ${MAIN_SOURCES})
+
+# Create test executable
+add_executable(RunTests ${TEST_SOURCES})
+
+# Link libraries for both
 target_link_libraries(${PROJECT_NAME} 
+    Threads::Threads
+)
+
+target_link_libraries(RunTests 
     Threads::Threads
 )
 
 # Enable testing
 enable_testing()
-#add_subdirectory(tests)
+
+# Add test
+add_test(NAME StrategyTests COMMAND RunTests)
+
+# Custom target to run tests easily
+add_custom_target(test_all
+    COMMAND ${CMAKE_CTEST_COMMAND} --verbose
+    DEPENDS RunTests
+)

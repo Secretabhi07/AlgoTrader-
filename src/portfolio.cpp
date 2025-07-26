@@ -34,5 +34,15 @@ double Portfolio::getUnrealizedPnL(const std::unordered_map<std::string, double>
 }
 
 double Portfolio::getTotalValue(const std::unordered_map<std::string, double>& currentPrices) const {
-    return cash + getUnrealizedPnL(currentPrices);
+    double stockValue = 0.0;
+    
+    // Calculate current market value of all positions
+    for (const auto& pos : positions) {
+        auto priceIt = currentPrices.find(pos.first);
+        if (priceIt != currentPrices.end()) {
+            stockValue += pos.second * priceIt->second; // position * current_price
+        }
+    }
+    
+    return cash + stockValue;
 }

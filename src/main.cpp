@@ -18,15 +18,28 @@ private:
     
 public:
     void loadData() {
-        // Sample data - in real implementation, load from CSV file
-        historicalData.push_back(MarketData("AAPL", 150.0, 150.1, 150.05, 1000000));
-        historicalData.push_back(MarketData("AAPL", 150.1, 150.2, 150.15, 1000500));
-        historicalData.push_back(MarketData("AAPL", 150.2, 150.3, 150.25, 1001000));
-        // Add more sample data...
-        for (int i = 0; i < 100; ++i) {
-            double price = 150.0 + (i * 0.1);
-            historicalData.push_back(MarketData("AAPL", price, price + 0.1, price + 0.05, 1000000 + i * 100));
+        // Generate more sample data to trigger moving average crossover
+        std::cout << "Loading sample market data..." << std::endl;
+        
+        // Start with prices trending down (long MA will be higher)
+        for (int i = 0; i < 15; ++i) {
+            double price = 152.0 - (i * 0.05); // Prices going down from 152.0 to 151.3
+            historicalData.push_back(MarketData("AAPL", price - 0.01, price + 0.01, price, 1000000 + i * 100));
         }
+        
+        // Then prices start trending up (this will create the crossover signal)
+        for (int i = 0; i < 25; ++i) {
+            double price = 151.3 + (i * 0.08); // Prices going up from 151.3 to 153.3
+            historicalData.push_back(MarketData("AAPL", price - 0.01, price + 0.01, price, 1000000 + (15 + i) * 100));
+        }
+        
+        // Then prices trend down again (to trigger sell signal)
+        for (int i = 0; i < 15; ++i) {
+            double price = 153.3 - (i * 0.06); // Prices going down
+            historicalData.push_back(MarketData("AAPL", price - 0.01, price + 0.01, price, 1000000 + (40 + i) * 100));
+        }
+        
+        std::cout << "Loaded " << historicalData.size() << " data points" << std::endl;
     }
     
     void subscribe(const std::string& symbol) override {
@@ -40,7 +53,7 @@ public:
                 if (!running) break;
                 
                 addData(data);
-                std::this_thread::sleep_for(std::chrono::milliseconds(100)); // Simulate real-time
+                std::this_thread::sleep_for(std::chrono::milliseconds(50)); // Faster simulation
             }
         });
     }
@@ -73,20 +86,26 @@ int main() {
         dataFeed->subscribe("AAPL");
         dataFeed->start();
         
-        // Process market data
+        // Process market data - increased count to see the crossover
         MarketData data;
         int dataCount = 0;
-        while (dataFeed->getNextData(data) && dataCount < 50) {
+        std::cout << "\n=== Starting Market Data Processing ===" << std::endl;
+        
+        while (dataFeed->getNextData(data) && dataCount < 55) { // Process more data points
             std::cout << "Processing: " << data.symbol 
-                      << " Price: $" << data.last 
+                      << " Price: $" << std::fixed << std::setprecision(2) << data.last 
                       << " Volume: " << data.volume << std::endl;
             
             strategy->onMarketData(data);
             ++dataCount;
+            
+            // Small delay to see the output clearly
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
         }
         
         dataFeed->stop();
-        std::cout << "Trading session completed." << std::endl;
+        std::cout << "\n=== Trading session completed ===" << std::endl;
+        std::cout << "Processed " << dataCount << " data points total." << std::endl;
         
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;

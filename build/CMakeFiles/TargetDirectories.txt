@@ -1,4 +1,0 @@
-/Users/abhijit/Desktop/AlgoTradingSystem/build/CMakeFiles/AlgoTradingSystem.dir
-/Users/abhijit/Desktop/AlgoTradingSystem/build/CMakeFiles/test.dir
-/Users/abhijit/Desktop/AlgoTradingSystem/build/CMakeFiles/edit_cache.dir
-/Users/abhijit/Desktop/AlgoTradingSystem/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,280 @@
+# Algorithmic Trading System - Git Ignore File
+# =============================================
+
+# Build directories
+build/
+builds/
+cmake-build-*/
+out/
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+AlgoTradingSystem
+RunTests
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+# IDE files
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Visual Studio
+.vs/
+*.vcxproj.user
+*.vcxproj.filters
+*.VC.opendb
+*.VC.VC.opendb
+
+# CLion
+.idea/
+cmake-build-*/
+
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+DerivedData/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Qt Creator
+CMakeLists.txt.user
+CMakeLists.txt.user.*
+
+# Eclipse CDT
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.project
+.cproject
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# System files
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Log files
+*.log
+logs/
+*.out
+
+# Temporary files
+*.tmp
+*.temp
+*~
+.#*
+#*#
+
+# Editor backups
+*.bak
+*.swp
+*.swo
+*~
+
+# Package managers
+conan.lock
+conanbuild.txt
+conanrun.txt
+vcpkg_installed/
+
+# Profiling data
+*.prof
+*.gprof
+callgrind.out.*
+massif.out.*
+*.dhat
+
+# Coverage reports
+*.gcov
+*.gcda
+*.gcno
+lcov.info
+coverage/
+
+# Sanitizer outputs
+*.san
+
+# Core dumps
+core
+core.*
+
+# Configuration files with sensitive data
+config_production.txt
+config_local.txt
+secrets.txt
+*.key
+*.pem
+*.p12
+
+# Data files (optional - uncomment if you don't want to track data)
+# data/*.csv
+# data/*.json
+# data/*.xml
+
+# Documentation build
+docs/_build/
+docs/html/
+docs/latex/
+
+# Python (if using Python scripts for data processing)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+
+# Performance test results
+benchmark_results/
+perf_data/
+
+# Docker
+Dockerfile.local
+docker-compose.override.yml
+
+# Local environment variables
+.env
+.env.local
+.env.*.local
+
+# Cache directories
+.cache/
+*.cache
+
+# Lock files
+package-lock.json
+yarn.lock
+
+# OS generated files
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+Session.vim
+.netrwhist
+*~
+tags
+[._]*.un~

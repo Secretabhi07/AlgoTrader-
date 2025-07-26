@@ -1,4 +1,3 @@
-
 #include "risk_manager.h"
 #include <iostream>
 #include <cmath>
@@ -7,7 +6,7 @@ RiskManager::RiskManager(double maxPos, double maxLoss)
     : maxPositionSize(maxPos), maxDailyLoss(maxLoss), currentPnL(0.0) {}
 
 bool RiskManager::validateOrder(const Order& order, double currentPosition) {
-    // Check position size limits
+    // Calculate the dollar value of the new position
     double newPosition = currentPosition;
     if (order.type == OrderType::BUY) {
         newPosition += order.quantity;
@@ -15,8 +14,11 @@ bool RiskManager::validateOrder(const Order& order, double currentPosition) {
         newPosition -= order.quantity;
     }
     
-    if (std::abs(newPosition) > maxPositionSize) {
-        std::cout << "Order rejected: Position size limit exceeded" << std::endl;
+    // Check position size limit (in dollar terms)
+    double positionValue = std::abs(newPosition * order.price);
+    if (positionValue > maxPositionSize) {
+        std::cout << "Order rejected: Position size limit exceeded ($" 
+                  << positionValue << " > $" << maxPositionSize << ")" << std::endl;
         return false;
     }
     

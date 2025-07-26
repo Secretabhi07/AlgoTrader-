@@ -1,0 +1,150 @@
+# Algorithmic Trading System - System Requirements
+# ================================================
+
+# Build System Requirements
+# -------------------------
+cmake>=3.15                 # Build system generator
+make                        # Build automation tool (or ninja-build as alternative)
+
+# Compiler Requirements (Choose one)
+# ----------------------------------
+# GCC (GNU Compiler Collection)
+gcc>=8.0                    # C++ compiler (Linux/Windows)
+g++>=8.0                    # C++ compiler frontend
+
+# OR Clang (LLVM)
+clang>=10.0                 # C++ compiler (macOS/Linux)
+clang++>=10.0              # C++ compiler frontend
+
+# OR Microsoft Visual C++ (Windows)
+# msvc>=2019                # Visual Studio 2019 or later
+
+# System Libraries
+# ----------------
+libpthread                  # POSIX threads library (Linux)
+libc++                     # C++ standard library (macOS with Clang)
+libstdc++                  # C++ standard library (Linux with GCC)
+
+# Development Tools (Optional but Recommended)
+# --------------------------------------------
+git                        # Version control
+gdb                        # GNU debugger (Linux)
+lldb                       # LLVM debugger (macOS)
+valgrind                   # Memory debugging tool (Linux)
+
+# Platform-Specific Package Managers
+# -----------------------------------
+# macOS: brew install cmake
+# Ubuntu/Debian: apt-get install build-essential cmake libpthread-stubs0-dev
+# CentOS/RHEL: yum groupinstall "Development Tools" && yum install cmake3
+# Windows: Install Visual Studio 2019+ with C++ tools
+
+# C++ Standard Library Features Used
+# -----------------------------------
+# - std::thread (C++11)
+# - std::mutex, std::condition_variable (C++11)
+# - std::chrono (C++11)
+# - std::unique_ptr, std::make_unique (C++14)
+# - std::unordered_map (C++11)
+# - std::string_view (C++17) - if used
+# - std::optional (C++17) - if used
+
+# Minimum Hardware Requirements
+# -----------------------------
+# CPU: Any x64 processor (Intel/AMD)
+# RAM: 512 MB minimum, 2 GB recommended
+# Storage: 100 MB for build artifacts
+# Network: Not required (standalone application)
+
+# Supported Operating Systems
+# ---------------------------
+# - macOS 10.15 (Catalina) or later
+# - Ubuntu 18.04 LTS or later
+# - Debian 10 or later
+# - CentOS 7 or later
+# - Red Hat Enterprise Linux 7 or later
+# - Windows 10 or later (with WSL2 or Visual Studio)
+
+# Thread Safety Requirements
+# --------------------------
+# - POSIX threads (pthreads) support
+# - C++11 threading model compliance
+# - Atomic operations support
+
+# Installation Commands by Platform
+# ---------------------------------
+
+# macOS (using Homebrew):
+# brew install cmake
+# xcode-select --install
+
+# Ubuntu/Debian:
+# sudo apt-get update
+# sudo apt-get install -y build-essential cmake libpthread-stubs0-dev git
+
+# CentOS/RHEL:
+# sudo yum groupinstall "Development Tools"
+# sudo yum install cmake3 git
+
+# Arch Linux:
+# sudo pacman -S base-devel cmake git
+
+# Windows (using vcpkg):
+# Install Visual Studio 2019 or later with C++ workload
+# Install Git for Windows
+# Install CMake for Windows
+
+# Performance Optimization Dependencies (Optional)
+# ------------------------------------------------
+# - Intel TBB (Threading Building Blocks)
+# - OpenMP (for parallel processing)
+# - Profile-guided optimization tools
+
+# Testing Framework (Built-in)
+# ----------------------------
+# Uses custom lightweight testing framework
+# No external testing dependencies required
+
+# Configuration File Format
+# -------------------------
+# Standard INI-style configuration files
+# No external parsing libraries required
+
+# Memory Management
+# ----------------
+# Uses RAII (Resource Acquisition Is Initialization)
+# Smart pointers (std::unique_ptr, std::shared_ptr)
+# No manual memory management
+# No external memory management libraries required
+
+# Networking (Future Enhancement)
+# ------------------------------
+# For future broker integration:
+# - libcurl (HTTP/HTTPS)
+# - WebSocket libraries
+# - SSL/TLS support
+
+# Data Processing (Current)
+# -------------------------
+# Built-in CSV parsing
+# No external data processing libraries required
+# Uses standard C++ containers and algorithms
+
+# Logging (Built-in)
+# ------------------
+# Uses std::cout/std::cerr for output
+# No external logging frameworks required
+# Future: Consider spdlog or similar
+
+# Build Time Estimates
+# --------------------
+# Debug build: ~2-5 minutes
+# Release build: ~3-7 minutes
+# Clean build: ~5-10 minutes
+# Incremental build: ~30 seconds
+
+# Runtime Dependencies
+# -------------------
+# None - fully self-contained executable
+# Configuration file (config.txt) - optional
+# Sample data files - optional for testing

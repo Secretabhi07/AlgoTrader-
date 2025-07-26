@@ -6,6 +6,7 @@
 #include <deque>
 #include <numeric>
 #include <iostream>
+#include <iomanip>
 #include "market_data.h"
 
 enum class OrderType { BUY, SELL };
@@ -28,7 +29,7 @@ protected:
     std::unordered_map<std::string, double> positions;
     double cash;
     
-    void generateOrder(const std::string& symbol, OrderType type, int quantity, double price);
+    virtual void generateOrder(const std::string& symbol, OrderType type, int quantity, double price);
     
 public:
     Strategy(const std::string& strategyName, double initialCash);
@@ -52,6 +53,10 @@ private:
     bool prevCrossAbove = false;
     
     void updateMovingAverages();
+    
+protected:
+    // Make generateOrder virtual so it can be overridden in tests
+    virtual void generateOrder(const std::string& symbol, OrderType type, int quantity, double price) override;
     
 public:
     MovingAverageCrossover(const std::string& sym, int shortP, int longP, double initialCash);
